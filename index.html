@@ -1,0 +1,81 @@
+<script>
+
+let playerScore = 0;
+let computerScore = 0;
+
+    let computerPlay = () => {
+        let choice = ["Rock", "Paper", "Scissors"];
+        index = Math.floor(Math.random(0,2) * 3);
+        let computerSelection = choice[index];
+        return computerSelection.toLowerCase();
+    };
+
+    let playerPlay = () => {
+        let playerSelection = prompt("Rock, Paper, or Scissors?");
+        return playerSelection.toLowerCase(); 
+    };
+
+    let playRound = (playerSelection, computerSelection) => {
+        if ((playerSelection === "rock") && (computerSelection === "rock")) {
+            console.log("It's a tie!");
+            return;
+        }
+
+        else if ((playerSelection === "rock") && (computerSelection === "paper")) {
+            console.log("You Lose! Paper beats Rock!");
+            return computerScore++;
+        }
+
+        else if ((playerSelection === "rock") && (computerSelection === "scissors")) {
+            console.log("You Win! Rock Beats Scissors!");
+            return playerScore++;
+        }
+
+        else if ((playerSelection === "paper") && (computerSelection === "rock")) {
+            console.log("You Win! Paper Beats Rock!");
+            return playerScore++;
+        }
+
+        else if ((playerSelection === "paper") && (computerSelection === "paper")) {
+            console.log("It's a tie!");
+            return;
+        }
+
+        else if ((playerSelection === "paper") && (computerSelection === "scissors")) {
+            console.log("You Lose! Scissors beats Paper!");
+            return computerScore++;
+        }
+
+        else if ((playerSelection === "scissors") && (computerSelection === "rock")) {
+            console.log("You Lose! Rock beats Scissors!)");
+            return computerScore++;
+        }
+
+        else if ((playerSelection === "scissors") && (computerSelection === "paper")) {
+            console.log("You Win! Scissors Beats Paper!");
+            return playerScore++;
+        } else {
+            console.log("It's a tie!");
+            return;
+        }
+    };
+
+    let game = () => {
+        let round = 1;
+        
+        while (round <= 5) {
+            playRound(playerPlay(), computerPlay());
+            round++;
+        }
+
+        if (playerScore > computerScore) {
+            console.log("You Win! Congratulations!")
+        }
+
+        else if (computerScore > playerScore) {
+            console.log("You Lose! Better Luck Next Time...")
+        } else {
+            console.log("Looks like a tie!")
+        }
+    }
+</script>
